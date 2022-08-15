@@ -1,0 +1,287 @@
+.app .foot, .app .task, .app .head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app .task .check input + label::before, .app .task .check input + label::after, .app .addBox .add {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.progress, .app .head .toggle .icon {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+  background-color: #25273c;
+  color: #fff;
+}
+
+.app {
+  max-width: 30em;
+  margin: 5em auto;
+  padding: 1em;
+  transition: color 0.3s;
+}
+
+.app .head {
+  justify-content: space-between;
+}
+
+.app .head h1 {
+  text-transform: uppercase;
+  letter-spacing: 7px;
+}
+
+.app .head .toggle {
+  width: 26px;
+  height: 26px;
+  position: relative;
+}
+
+.app .head .toggle .icon {
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.app .head .toggle .icon.hidden {
+  opacity: 0;
+}
+
+.app .addBox {
+  margin: 2em 0;
+  position: relative;
+}
+
+.app .addBox .add {
+  left: 2em;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.app .addBox .add:hover {
+  border: none;
+  background: linear-gradient(-45deg, hsl(280deg, 87%, 65%), hsl(192deg, 100%, 67%));
+  cursor: pointer;
+}
+
+.app .addBox input {
+  caret-color: #fff;
+  color: #fff;
+  width: 100%;
+  border-radius: 0.3em;
+  padding: 1em 4em;
+  border: none;
+  background-color: #25273c;
+}
+
+.app .addBox input:focus {
+  outline: 2px dotted #ccc;
+}
+
+.app .task {
+  background-color: #25273c;
+  justify-content: initial;
+  padding: 1em 2em;
+  border-bottom: 1px solid rgba(153, 153, 153, 0.5);
+  cursor: pointer;
+}
+
+.app .task.over {
+  border: none;
+  border: 2px dotted #fff;
+}
+
+.app .task p {
+  flex: 1;
+  margin-left: 2em;
+}
+
+.app .task[data-status=done] p {
+  text-decoration: line-through;
+}
+
+.app .task:first-of-type {
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+
+.app .task .check input {
+  display: none;
+}
+
+.app .task .check input + label {
+  display: block;
+  position: relative;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+.app .task .check input + label::after {
+  content: "";
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+}
+
+.app .task .check input + label::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/images/icon-check.svg), linear-gradient(-45deg, hsl(280deg, 87%, 65%), hsl(192deg, 100%, 67%));
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  z-index: 99;
+  opacity: 0;
+}
+
+.app .task .check input + label:hover {
+  cursor: pointer;
+  background: linear-gradient(-45deg, hsl(280deg, 87%, 65%), hsl(192deg, 100%, 67%));
+  border: none;
+}
+
+.app .task .check input + label:hover::after {
+  background-color: #25273c;
+}
+
+.app .task .check input:checked + label {
+  border: none;
+}
+
+.app .task .check input:checked + label::before {
+  opacity: 1;
+}
+
+.app .foot {
+  justify-content: space-between;
+  gap: 1em;
+  font-size: 14px;
+  background-color: #25273c;
+  padding: 1em 2em;
+  border-bottom-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app .foot div span {
+  margin: 0 0.5em;
+}
+
+.app .foot span:hover {
+  cursor: pointer;
+  color: #116dd7;
+}
+
+.app .foot #leftItems #num {
+  margin-right: 0.5em;
+}
+
+.app .notation {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 2em;
+  border-radius: 0.3em;
+  margin-top: 2em;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.app .notation:hover {
+  cursor: pointer;
+  color: #116dd7;
+}
+
+.hint {
+  margin-top: 2em;
+  text-align: center;
+  background-image: linear-gradient(to right, rgb(195, 0, 255), rgb(255, 0, 76));
+  color: rgba(0, 0, 0, 0) !important;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -ms-background-clip: text;
+  -o-background-clip: text;
+}
+
+.progress {
+  z-index: -1;
+  width: 100%;
+}
+
+.progress div {
+  position: absolute;
+}
+
+.progress div img {
+  width: 100%;
+  height: 20em;
+  object-fit: cover;
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+}
+
+body.dark {
+  background-color: #25273c;
+  color: #fff;
+}
+
+body.light {
+  background-color: #fff;
+}
+
+body.light h1 {
+  color: #fff;
+}
+
+body.light * {
+  color: #000;
+}
+
+body.light .addBox input {
+  color: #000;
+  caret-color: #000;
+}
+
+body.light .addBox input, body.light .task, body.light .foot, body.light *::before, body.light *::after {
+  background-color: #fff !important;
+}
+
+body.light .progress .dark img {
+  opacity: 0;
+}
+
+/*# sourceMappingURL=main.css.map */
